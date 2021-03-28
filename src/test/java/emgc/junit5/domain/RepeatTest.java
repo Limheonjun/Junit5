@@ -2,6 +2,8 @@ package emgc.junit5.domain;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,6 +22,16 @@ class RepeatTest {
     @ValueSource(strings = {"날씨가", "많이", "더워지고", "있네요."})
     void test2(String message) {
         System.out.println(message);
+    }
+
+    @Test
+    @DisplayName("인자값 조합")
+    @ParameterizedTest
+    @CsvSource({"스파클", "삼다수"})
+    void test3(ArgumentsAccessor argumentsAccessor) {
+        Product product = new Product();
+        product.setName(argumentsAccessor.getString(0));
+        System.out.println(product.toString());
     }
 
 
