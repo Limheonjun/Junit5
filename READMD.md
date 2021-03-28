@@ -51,3 +51,45 @@ springboot에 기본적으로 Junit5가 탑재
 
 - assertTimeout(duration, executable)
 	> 특정 시간 안에 실행이 완료되는지 확인
+
+## Condition Test
+
+- assumeTrue(조건)
+	> 조건이 참인 경우에만 다음 코드 실행
+
+- assertThat(조건, 테스트)
+	> 조건이 참인 경우에만 테스트 실행
+                       >
+- @Enabled__, @Disabled__
+   >*OS, Jre 등 해당 조건을 만족할때만 실행 또는 실행하지 않게 함*
+   
+    > OnOs
+    > OnJre
+    > IfSystemProperty
+    > IfEnvironmentVariable
+    > If
+                                                                             
+ ## Taging
+ 
+ - @Tag
+    > 테스트 메소드에 태그를 추가할 수 있음
+    > 태그로 필터링 가능
+    > 하나의 테스트 메소드에 여러 태그 사용 가능
+ 
+ ## Repeat
+ 
+ - @RepeatedTest
+    > 랜덤값 등 반복적으로 테스트가 필요한 곳에 사용
+    > placeholder를 사용할 수 있음
+    >- {displayName}, {currentRepetition}, {totalRepetitions}
+ 
+    > 반복 횟수와 반복 테스트 이름을 설정할 수 있음
+    >- @RepeatedTest(value = 10, "{displayName}의 {currentRepetition}째 테스트")
+    
+    > 테스트 메소드의 인자로 RepetitionInfo를 받으면 몇번째 반복인지, 몇번째 반복해야하는지 등의 정보를 얻을 수 있음
+    
+ - @ParameterizedTest
+    > 테스트에 여러 다른 매개변수를 대입해가며 반복 실행
+    
+    > placeholder 사용 가능
+    >- {displayName}, {index}, {arguments}, {0}, {1} ...
